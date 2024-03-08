@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  uptermd:
+    image: ghcr.io/owenthereal/upterm/uptermd
+    ports:
+      - "2222:2222"
+      - "8080:8080"
+      - "9090:9090"
+
+  ubuntu:
+    image: ssh_on_docker:latest
+    container_name: ubuntu
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./assets:/assets
+    ports:
+      - "8000:8000"

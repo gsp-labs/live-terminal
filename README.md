@@ -11,6 +11,8 @@ GOOS=linux GOARCH=arm64 go build -x -v -mod=vendor -ldflags "-X main.version=1 -
 docker build -t ssh_on_docker . 
 
 docker run -dit -p 3000:22 -v $(pwd)/assets:/assets ssh_on_docker:latest
+
+docker run -dit --network=host -v $(pwd)/assets:/assets ssh_on_docker:latest
 ```
 
 ## Start public terminal access
