@@ -17,12 +17,14 @@ const port = process.env.PORT || 3000;
 
 wss.on("connection", (ws: WebSocket) => {
   const sshProcess = spawn("ssh", [
+    "-tt",
     "-o",
-    "ProxyCommand=upterm proxy wss://PS9ZOH7a1BFfvDoBGhdO:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com",
-    "PS9ZOH7a1BFfvDoBGhdO:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com:443",
+    "ProxyCommand=upterm proxy wss://b7fSIqoZHqTkphi5SNbf:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com",
+    "b7fSIqoZHqTkphi5SNbf:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com:443",
   ]);
 
   sshProcess.stdout.on("data", (data) => {
+    console.log("Sending data", data);
     ws.send(data.toString());
   });
 
@@ -31,10 +33,12 @@ wss.on("connection", (ws: WebSocket) => {
   });
 
   ws.on("message", (data: any) => {
+    console.log("On message", data);
     sshProcess.stdin.write(data);
   });
 
   ws.on("close", () => {
+    console.log("Closed");
     sshProcess.kill();
   });
 
