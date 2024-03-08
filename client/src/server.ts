@@ -7,9 +7,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
-});
+app.use("/static", express.static(path.join(__dirname, "../../dist/")));
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
