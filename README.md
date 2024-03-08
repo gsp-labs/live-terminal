@@ -26,3 +26,25 @@ cd assets
 chmod +x tty-share
 ./tty-share -public -no-wait
 ```
+
+### Create key pair
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+eval "$(ssh-agent -s)"
+```
+
+---
+
+## Upterm
+
+### Create session
+```
+./upterm host --server wss://upterm-f232c0de815c.herokuapp.com --accept -- bash
+```
+
+> With keys
+```
+./upterm host --authorized-keys ../keys/keyfile.pub --server wss://upterm-f232c0de815c.herokuapp.com --accept -- bash
+
+```

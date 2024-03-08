@@ -15,5 +15,6 @@ services:
     tty: true
     volumes:
       - ./assets:/assets
+      - ./keys:/keys
     ports:
       - "8000:8000"
