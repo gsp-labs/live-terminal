@@ -5,10 +5,10 @@ const build = process.env.CLIENT_ENV === 'development';
 
 let mainConfig  = {
     entry: {
-        'client': './src/js/main.ts',
+        'client': './src/client/index.ts',
     },
     output: {
-        path: __dirname + '/dist/',
+        path: __dirname + '/dist/public',
         filename: '[name].js',
     },
     mode: build ? 'development' : 'production',
@@ -35,7 +35,7 @@ let mainConfig  = {
     plugins: [
       new copyWebpackPlugin({
         patterns: [
-          {from: './src/public', },
+          {from: './src/client/static', },
         ]}),
     ],
 };
