@@ -19,8 +19,8 @@ wss.on("connection", (ws: WebSocket) => {
   const sshProcess = spawn("ssh", [
     "-tt",
     "-o",
-    "ProxyCommand=upterm proxy wss://b7fSIqoZHqTkphi5SNbf:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com",
-    "b7fSIqoZHqTkphi5SNbf:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com:443",
+    "ProxyCommand=upterm proxy wss://Ytw8uaCPcdGfeNJf6KfL:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com",
+    "Ytw8uaCPcdGfeNJf6KfL:MC4wLjAuMDoyMjIy@upterm-f232c0de815c.herokuapp.com:443",
   ]);
 
   sshProcess.stdout.on("data", (data) => {
